@@ -1,8 +1,11 @@
 local load_time_start = os.clock()
 local function connect_glass(node, img)
 	local tmp = minetest.registered_nodes[node]
-		tmp.tiles = img
-		tmp.drawtype = "glasslike_framed"
+	if not tmp then
+		return
+	end
+	tmp.tiles = img
+	tmp.drawtype = "glasslike_framed"
 	minetest.register_node(":"..node, tmp)
 end
 
