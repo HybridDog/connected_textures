@@ -19,4 +19,10 @@ for node,img in pairs(glass_list) do
 	end
 end
 
-print(string.format("[connected_textures] loaded after ca. %.2fs", os.clock() - load_time_start))
+local time = math.floor(tonumber(os.clock()-load_time_start)*100+0.5)/100
+local msg = "[connected_textures] loaded after ca. "..time
+if time > 0.05 then
+	print(msg)
+else
+	minetest.log("info", msg)
+end
