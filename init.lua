@@ -1,11 +1,6 @@
 local load_time_start = os.clock()
 
 local glass_list = {
-	["moreblocks:iron_glass"] = "connected_textures_iron_glass_stripes.png",
-	["moreblocks:coal_glass"] = "connected_textures_coal_glass_stripes.png",
-	["moreblocks:clean_glass"] = "connected_textures_invisible.png",
-	["moreblocks:trap_glass"] = "connected_textures_glass_stripes.png",
-	["moreblocks:super_glow_glass"] = "connected_textures_glow_glass_stripes.png",
 }
 
 for node,img in pairs(glass_list) do
@@ -14,6 +9,8 @@ for node,img in pairs(glass_list) do
 	and def.drawtype == "glasslike" then
 		def.tiles[2] = img
 		minetest.override_item(node, {tiles = def.tiles, drawtype = "glasslike_framed_optional"})
+	else
+		minetest.log("error", "[connected_textures] "..node.." isn't overridden.")
 	end
 end
 
